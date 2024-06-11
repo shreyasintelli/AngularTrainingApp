@@ -76,37 +76,44 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Start date</label>
-                            <input type="date" class="form-control" #startDate="ngModel" ngModel name="startDate" 
+                            <input type="date" class="form-control" #startDate="ngModel" [(ngModel)]="startDateModel" name="startDate" 
                             required
-                            [appCheckStartDate]="dbStartDate"
-                            (blur)="displayStartDate($event);"
+                            (blur)="displayStartDate($event); validateDates()"
                             />
                            
-                            <div *ngIf="!startDate?.valid && (startDate?.touched|| startDate.dirty)" class="text-danger">
-                                <p *ngIf="startDate?.errors?.['required']"> start date is required</p>
-                                <p *ngIf="startDate?.errors?.['startDateBegin']"> start date should be greater than {{dbStartDate.getFullYear()}}</p>
+                            <div *ngIf="!startDate.valid && (startDate.touched || startDate.dirty)" class="text-danger">
+                                <p *ngIf="startDate.errors?.['required']">Start date is required</p>
+                                <p *ngIf="startDateModel && endDateModel && endDateInvalid">Start date should be less than end date</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label">End date</label>
-                            <input type="date" class="form-control" #endDate="ngModel" ngModel name="endDate" 
+                            <input type="date" class="form-control" #endDate="ngModel" [(ngModel)]="endDateModel" name="endDate" 
                             required
-                            [appCheckStartDate]="startDate.value"
+                            (ngModelChange)="validateDates()"
                             />
-                            <div *ngIf="!endDate?.valid && (endDate?.touched || endDate.dirty)" class="text-danger">
-                                <p *ngIf="endDate?.errors?.['required']"> End date is required</p>
-                                <p *ngIf="endDate?.errors?.['startDateBegin']"> end date should be greater than or equal to {{dbStartDate.getFullYear()}}</p>
+                            <div *ngIf="!endDate.valid && (endDate.touched || endDate.dirty)" class="text-danger">
+                                <p *ngIf="endDate.errors?.['required']">End date is required</p>
+                                <p *ngIf="startDateModel && endDateModel && endDateInvalid">End date should be greater than start date</p>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Mobile Number</label>
-                            <input type="text" class="form-control" #mobileNumber="ngModel" ngModel name="mobileNumber" 
-                            required
-                            />
-                            <div *ngIf="!mobileNumber?.valid && mobileNumber?.touched" class="text-danger">
-                                <p *ngIf="mobileNumber?.errors?.['required']"> Mobile Number is required</p>
-                            </div>
-                        </div>
+                      <div class="form-group">
+    <label class="form-label">Mobile Number</label>
+    <input
+        type="text"
+        class="form-control"
+        #mobileNumber="ngModel"
+        ngModel
+        name="mobileNumber"
+        required
+        pattern="^\d{10}$"
+    />
+    <div *ngIf="!mobileNumber?.valid && mobileNumber?.touched" class="text-danger">
+        <p *ngIf="mobileNumber?.errors?.['required']">Mobile Number is required</p>
+        <p *ngIf="mobileNumber?.errors?.['pattern']">Mobile Number must be exactly 10 digits</p>
+    </div>
+</div>
+
                         <div class="form-group">
                             <input type="button" [disabled]="registerForm.invalid" class="btn btn-primary mt-2" value="Sign In" (click)="signInEventHandler(registerForm)"/>
                         </div>

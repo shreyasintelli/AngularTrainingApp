@@ -11,26 +11,24 @@ export class SortExampleComponent {
   productsArr: Products[];
   sortField: string;
   sortOrder: string;
-  searchTerm:string;
-  showEditProduct:boolean;
-  productToEdit:Products | null;
-  workWithProduct:WorkWithProductsService
-  
+  searchTerm: string;
+  showEditProduct: boolean;
+  productToEdit: Products | null;
+  workWithProduct: WorkWithProductsService;
 
   constructor() {
-    this.showEditProduct=false;
-    this.productToEdit=null;
-    this.searchTerm="";
+    this.showEditProduct = false;
+    this.productToEdit = null;
+    this.searchTerm = "";
     this.sortField = "productId";
     this.sortOrder = "asc";
-    this.workWithProduct = inject(WorkWithProductsService)
+    this.workWithProduct = inject(WorkWithProductsService);
     this.productsArr = this.workWithProduct.getAllProducts();
   }
 
-  editProductEventHandler(productToEdit:Products){
-    this.showEditProduct=true;
-    this.productToEdit=productToEdit;
-
+  editProductEventHandler(productToEdit: Products) {
+    this.showEditProduct = true;
+    this.productToEdit = productToEdit;
   }
 
   sortEventHandler(selectedColumn: string, selectedOrder: string) {
@@ -39,17 +37,13 @@ export class SortExampleComponent {
     console.log("Selected Order", selectedOrder);
     this.sortOrder = selectedOrder;
   }
-  searchEventHandler()
-  {
-    
-  }
-  searchTermEventHandler(searchTextBox:any)
-  {
-    console.log("Key pressed",searchTextBox.value);
-    this.searchTerm=searchTextBox.value;
 
+  searchTermEventHandler(searchTextBoxValue: string) {
+    console.log("Key pressed", searchTextBoxValue);
+    this.searchTerm = searchTextBoxValue;
   }
-  closeProductEventHandler(){
-    this.showEditProduct=false
+
+  closeProductEventHandler() {
+    this.showEditProduct = false;
   }
 }

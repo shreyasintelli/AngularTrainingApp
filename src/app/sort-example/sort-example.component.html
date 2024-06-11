@@ -1,108 +1,76 @@
-<div class="search-box"  >
+<div class="search-box">
     <i class="fas fa-search"></i>
-    <input style="width: 80vw;" type="text" placeholder="Enter text to search" #searchTextBox (keyup)="searchTermEventHandler(searchTextBox);"/>
+    <input style="width: 80vw;" type="text" placeholder="Enter text to search" #searchTextBox (keyup)="searchTermEventHandler(searchTextBox.value)" />
 </div>
 <div class="container">
-   
     <div class="row">
         <div class="col">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>
-                            <div class="thContainer">
+                            <div class="thContainer" [class.active]="sortField === 'productId'">
                                 ProductId
                                 <div>
-                                        <ng-container *ngIf="sortField === 'productId'">
-                                            <button (click)="sortEventHandler('productId', sortOrder === 'asc' ? 'desc' : 'asc')">
-                                                {{ sortOrder === 'asc' ? '⬆️' : '⬇️'}}
-                                            </button>
-                                        </ng-container>
-                                        <ng-container *ngIf="sortField !== 'productId'">
-                                            <button (click)="sortEventHandler('productId', 'asc')">⬆️</button>
-                                        </ng-container>
+                                    <button (click)="sortEventHandler('productId', 'asc')" [class.activeAsc]="sortField === 'productId' && sortOrder === 'asc'">⬆️</button>
+                                    <button (click)="sortEventHandler('productId', 'desc')" [class.activeDesc]="sortField === 'productId' && sortOrder === 'desc'">⬇️</button>
                                 </div>
                             </div>
                         </th>
                         <th>
-                            <div class="thContainer">
+                            <div class="thContainer" [class.active]="sortField === 'productName'">
                                 Product Name
                                 <div>
-                                    <ng-container *ngIf="sortField === 'productName'">
-                                        <button (click)="sortEventHandler('productName', sortOrder === 'asc' ? 'desc' : 'asc')">
-                                            {{ sortOrder === 'asc' ? '⬆️' : '⬇️'}}
-                                        </button>
-                                    </ng-container>
-                                    <ng-container *ngIf="sortField !== 'productName'">
-                                        <button (click)="sortEventHandler('productName', 'asc')">⬆️</button>
-                                    </ng-container>
+                                    <button (click)="sortEventHandler('productName', 'asc')" [class.activeAsc]="sortField === 'productName' && sortOrder === 'asc'">⬆️</button>
+                                    <button (click)="sortEventHandler('productName', 'desc')" [class.activeDesc]="sortField === 'productName' && sortOrder === 'desc'">⬇️</button>
                                 </div>
                             </div>
                         </th>
                         <th>
-                            <div class="thContainer">
+                            <div class="thContainer" [class.active]="sortField === 'price'">
                                 Price
                                 <div>
-                                    <ng-container *ngIf="sortField === 'price'">
-                                        <button (click)="sortEventHandler('price', sortOrder === 'asc' ? 'desc' : 'asc')">
-                                            {{ sortOrder === 'asc' ? '⬆️' : '⬇️'}}
-                                        </button>
-                                    </ng-container>
-                                    <ng-container *ngIf="sortField !== 'price'">
-                                        <button (click)="sortEventHandler('price', 'asc')">⬆️</button>
-                                    </ng-container>
+                                    <button (click)="sortEventHandler('price', 'asc')" [class.activeAsc]="sortField === 'price' && sortOrder === 'asc'">⬆️</button>
+                                    <button (click)="sortEventHandler('price', 'desc')" [class.activeDesc]="sortField === 'price' && sortOrder === 'desc'">⬇️</button>
                                 </div>
                             </div>
                         </th>
                         <th>
-                            <div class="thContainer">
+                            <div class="thContainer" [class.active]="sortField === 'description'">
                                 Description
                                 <div>
-                                    <ng-container *ngIf="sortField === 'description'">
-                                        <button (click)="sortEventHandler('description', sortOrder === 'asc' ? 'desc' : 'asc')">
-                                            {{ sortOrder === 'asc' ? '⬆️' : '⬇️'}}
-                                        </button>
-                                    </ng-container>
-                                    <ng-container *ngIf="sortField !== 'description'">
-                                        <button (click)="sortEventHandler('description', 'asc')">⬆️</button>
-                                    </ng-container>
+                                    <button (click)="sortEventHandler('description', 'asc')" [class.activeAsc]="sortField === 'description' && sortOrder === 'asc'">⬆️</button>
+                                    <button (click)="sortEventHandler('description', 'desc')" [class.activeDesc]="sortField === 'description' && sortOrder === 'desc'">⬇️</button>
                                 </div>
                             </div>
                         </th>
                         <th>
-                            <div class="thContainer">
+                            <div class="thContainer" [class.active]="sortField === 'quantity'">
                                 Quantity
                                 <div>
-                                    <ng-container *ngIf="sortField === 'quantity'">
-                                        <button (click)="sortEventHandler('quantity', sortOrder === 'asc' ? 'desc' : 'asc')">
-                                            {{ sortOrder === 'asc' ? '⬆️' : '⬇️'}}
-                                        </button>
-                                    </ng-container>
-                                    <ng-container *ngIf="sortField !== 'quantity'">
-                                        <button (click)="sortEventHandler('quantity', 'asc')">⬆️</button>
-                                    </ng-container>
+                                    <button (click)="sortEventHandler('quantity', 'asc')" [class.activeAsc]="sortField === 'quantity' && sortOrder === 'asc'">⬆️</button>
+                                    <button (click)="sortEventHandler('quantity', 'desc')" [class.activeDesc]="sortField === 'quantity' && sortOrder === 'desc'">⬇️</button>
                                 </div>
                             </div>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                   <tr *ngFor="let product of productsArr | displayArray: searchTerm | sortArr: sortField: sortOrder">
+                    <tr *ngFor="let product of productsArr | displayArray: searchTerm | sortArr: sortField: sortOrder">
                         <td>{{product.productId}}</td>
                         <td style="width: 250px;">{{product.productName}}</td>
                         <td>{{product.price}}</td>
                         <td style="width: 250px;">{{product.description}}</td>
                         <td>{{product.quantity}}</td>
-                        <td style="display: flex; justify-content: center;"><button  class="btn btn-primary" id="primary"  value="edit" (click)="editProductEventHandler(product)" ><i class="fa fa-edit"></i>
-                        </button></td>
+                        <td style="display: flex; justify-content: center;">
+                            <button class="btn btn-primary" id="primary" value="edit" (click)="editProductEventHandler(product)">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<app-editprodd *ngIf="showEditProduct"
-
-[(productToEdit)]="productToEdit"
-(closeProduct)="closeProductEventHandler()"
-></app-editprodd>
+<app-editprodd *ngIf="showEditProduct" [(productToEdit)]="productToEdit" (closeProduct)="closeProductEventHandler()"></app-editprodd>

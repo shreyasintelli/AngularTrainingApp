@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>PRODUCT NAME</th>
-                <th>Quantity selected </th>
+                <th>Quantity selected </th> 
                 <th>Price</th>
                 <th>Total</th>
             </tr>
@@ -15,10 +15,12 @@
                 <td>{{item.quantitySelected}}</td>
                 <td>{{item.price}}</td>
                 <td>{{item.price*item.quantitySelected}}</td>
+                
             </tr>
         </tbody>
         
     </table>
+    <input type="button" name="Proceed to Payment" value="Proceed to Payments" (click)="redirectToPayment()" id="">
 </ng-template>
 <ng-template #displayNoItems>
     <h2>No items added to the cart yet</h2>

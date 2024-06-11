@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 @Input() cartArr:any[];
-constructor()
+constructor( private router :Router)
 {
   this.cartArr=[];
 }
@@ -16,6 +17,10 @@ constructor()
   }
 log(){
   console.log(this.cartArr);
+}
+redirectToPayment(){
+  this.router.navigate(['payments'])
+
 }
 
 }

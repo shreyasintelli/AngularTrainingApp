@@ -1,6 +1,6 @@
 <!-- products-list.component.html -->
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-4" *ngFor="let product of productsArr">
       <div class="card mb-4">
       <div class="imgContainer">
@@ -27,5 +27,36 @@
     
 
     </app-add-to-cart>
-</div>
+</div> -->
+  <!-- new design -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Left Side (Product Cards) -->
+      <div class="col-md-8" style="overflow-y: auto; height: 100vh;">
+        <div class="card-columns">
+          <div class="card mb-4" *ngFor="let product of productsArr">
+            <div class="imgContainer">
+              <img class="card-img-top" id="productImg" style="max-height: 250px;" [src]="product.imgUrl" alt="{{product.productName}}">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{product.productName}}</h5>
+              <h5 class="card-title">{{product.price | currency :'INR':true}}</h5>
+              <p>Quantity Available: {{product.quantity}}</p>
+              <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+              <input type="button" value="Details" class="btn btn-primary m-2" (click)="detailsEventHandler(product);"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Side (Add to Cart Component) -->
+      <div class="col-md-4">
+        <div class="sticky-top" style="top: 0; height: 100vh; overflow-y: auto;">
+          <h6>Add to cart section</h6>
+          <div *ngIf="showAddToCart">
+            <app-add-to-cart [myCompanyName]="companyName" [selProduct]="selectedProduct" (cancelProduct)="cancelProductEventHandler()" (confirmProduct)="confirmProductEventHandler($event);"></app-add-to-cart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   

@@ -33,13 +33,12 @@
         <li [class.active]="currentRoute === '/home'"><a routerLink="/home">Home</a></li>
         <li [class.active]="currentRoute === '/search'"><a routerLink="/search">Search</a></li>
         <li [class.active]="currentRoute === '/sortPage'"><a routerLink="/sortPage">SortPage</a></li>
-        <li [class.active]="currentRoute === '/register'"><a routerLink="/register">Register</a></li>
+        <li  *ngIf="!isUserLoggedIn" [class.active]="currentRoute === '/register'"><a routerLink="/register">Register</a></li>
         <li [class.active]="currentRoute === '/api'"><a routerLink="/api">Api</a></li>
-        <li [class.active]="currentRoute === '/payments'"><a routerLink="/payments">Payments</a></li>
+        <!-- <li [class.active]="currentRoute === '/payments'"><a routerLink="/payments">Payments</a></li> -->
         <li *ngIf="!isUserLoggedIn"
         [class.active]="currentRoute === '/login'"><a routerLink="/login">Login</a></li>
-        <li *ngIf="isUserLoggedIn" style="cursor: pointer;"
-        [class.active]="currentRoute === '/login'"><a (click)="logoutEventHandler()">Logout</a></li>
+        <button class="logout" *ngIf="isUserLoggedIn" (click)="logoutEventHandler()">Logout</button>
       </ul>
     </div>
   </nav>

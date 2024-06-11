@@ -1,0 +1,27 @@
+<ng-template #displayTable>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>PRODUCT NAME</th>
+                <th>Quantity selected </th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+    
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartArr;">
+                <td>{{item.productName}}</td>
+                <td>{{item.quantitySelected}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.price*item.quantitySelected}}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+</ng-template>
+<ng-template #displayNoItems>
+    <h2>No items added to the cart yet</h2>
+</ng-template>
+
+<ng-container *ngIf="cartArr.length>0; then displayTable; else displayNoItems"></ng-container>

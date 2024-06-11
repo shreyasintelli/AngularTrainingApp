@@ -1,0 +1,24 @@
+
+<div class="formContainer">
+    
+<form class="form">
+    <div class="form-group">
+        <label>Product Id : </label>
+        <span >{{productToBeEdited?.productId}}</span>
+    </div>
+    <div class="form-group">
+        <label>Product Name</label>
+        <input class="form-control" type="text" [(ngModel)]="productToBeEdited.productName" name="productNameTextBox" />
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input class="form-control" type="text" [(ngModel)]="productToBeEdited.price" name="priceTextBox" />
+    </div>
+    <div class="form-group">
+        <label >Quantity</label>
+        <input class="form-control" type="text" [(ngModel)]="productToBeEdited.quantity" name="quantityTextBox" />
+    </div>
+</form>
+
+</div>
+

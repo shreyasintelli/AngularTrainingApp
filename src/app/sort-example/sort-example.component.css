@@ -1,0 +1,41 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+.thContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+button{
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+  .search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10vw;
+   
+    width: 80vw;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .search-box input[type="text"] {
+    padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 3px;
+    border-color: rgb(160, 160, 160);
+    
+
+  }
+  .search-box .fa-search {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    color: #3c75fb;
+   
+  }
+#primary{
+  background-color: #3c75fb;
+}

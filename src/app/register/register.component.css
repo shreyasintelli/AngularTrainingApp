@@ -1,0 +1,13 @@
+.required-asterisk {
+    color: red;
+    margin-left: 5px;
+}
+.fixed-card {
+    margin-top:60px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 25%;
+    height: calc(100% - 90px);
+    overflow-y: auto;
+}

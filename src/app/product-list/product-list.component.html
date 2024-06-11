@@ -1,0 +1,31 @@
+<!-- products-list.component.html -->
+
+<div class="row">
+    <div class="col-md-4" *ngFor="let product of productsArr">
+      <div class="card mb-4">
+      <div class="imgContainer">
+        <img class="card-img-top" id="productImg" style="max-height: 250px;" [src]="product.imgUrl" alt="{{product.productName}}">
+
+      </div>
+        <div class="card-body">
+            <h5 class="card-title">{{product.productName}}</h5>
+            <h5 class="card-title">{{product.price | currency :'INR':true}}</h5>
+            <p>Quantity Available: {{product.quantity}}</p>
+            
+            <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+            <input type="button" value="Details" class="btn btn-primary m-2 " (click)="detailsEventHandler(product);"/>
+
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showAddToCart">
+    <app-add-to-cart [myCompanyName]="companyName" [selProduct]="selectedProduct" (cancelProduct)="cancelProductEventHandler()"     (confirmProduct)="confirmProductEventHandler($event);"  >
+      
+    
+
+    </app-add-to-cart>
+</div>
+  

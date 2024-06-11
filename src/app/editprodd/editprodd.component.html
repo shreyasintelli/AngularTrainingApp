@@ -1,0 +1,28 @@
+
+<div class="formContainer">
+  <form >
+    <div class="closebuttonContainer">
+      <button class="closeButton" (click)="closeProductEventHandler()">❌</button>
+
+    </div>
+    <div class="mb-3">
+      <h3>Product ID : {{productToEdit?.productId}}</h3>
+      <label for="productName" class="form-label">Product Name :</label>
+      <input class="form-control" type="text" [(ngModel)]="productToEdit.productName" name="productNameTextBox" />
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price :</label>
+      <input type="number" class="form-control"  id="price" [(ngModel)]="productToEdit.price" name="priceTextbox">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description :</label>
+      <textarea class="form-control" id="description" rows="3" [(ngModel)]="productToEdit.description" placeholder="Enter product description" name="description"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Quantity :</label>
+      <input type="number" class="form-control" id="quantity" [(ngModel)]="productToEdit.quantity" name="quantity" placeholder="Enter quantity">
+    </div>
+    <button type="submit" class="btn btn-danger" (click)="closeProductEventHandler()" >Close</button>
+  </form>
+</div>
+ 

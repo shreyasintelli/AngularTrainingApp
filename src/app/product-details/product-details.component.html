@@ -1,0 +1,29 @@
+<!-- <div *ngIf="selectedProduct" >
+    <img [src]="selectedProduct.imgUrl" alt="">
+    <p>ProductName :{{selectedProduct.productName}}</p>
+    <p>description : {{selectedProduct.description}}</p>
+    <p>Price: {{selectedProduct.price}}</p>
+    <p>available quantity : {{selectedProduct.quantity}}</p>
+  </div>
+   -->
+
+   <div class="detailsContainer">
+    <div *ngIf="selectedProduct" class="row">
+      <!-- Image Column -->
+      <div class="col-md-4">
+        <img class="card-img"  style="max-height: 250px;" src="{{selectedProduct.imgUrl}}" alt="Product Image" >
+      </div>
+      <!-- Details Column -->
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><span class="key">ProductName : </span>  {{selectedProduct.productName}}</h5>
+            <p class="card-text"> <span class="key" >Description : </span>   {{selectedProduct.description}}</p>
+            <p class="card-text"><span  class="key">Price : </span> {{selectedProduct.price| currency :'INR':true}}</p>
+            <p class="card-text"><span class="key" >Available Quantity :</span> {{selectedProduct.quantity}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

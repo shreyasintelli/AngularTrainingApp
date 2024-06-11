@@ -1,0 +1,52 @@
+<p>register-reactive-form works!</p>
+<div class="container mt-5">
+    <h2>Reactive  Registration Form</h2>
+    <form [formGroup]="registerReactive" (ngSubmit)="submitEventHandler()">
+        <div  class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Enter your first name">
+            <div *ngIf="registerReactive.controls['firstName'].invalid && (registerReactive.controls['firstName'].touched || registerReactive.controls['firstName'].dirty)">
+                <p *ngIf="registerReactive.controls['firstName'].errors?.['required']">First NAme is manditory</p>
+                <p *ngIf="registerReactive.controls['firstName'].errors?.['minlength']">mininum 3 characters are required</p>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Enter your last name">
+            <div *ngIf="registerReactive.controls['lastName'].invalid && (registerReactive.controls['lastName'].touched || registerReactive.controls['lastName'].dirty)">
+                <p *ngIf="registerReactive.controls['lastName'].errors?.['required']">LAstNAme is manditory</p>
+                <p *ngIf="registerReactive.controls['lastName'].errors?.['minlength']">min chars should be 3</p>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter your password">
+            <div *ngIf="password.invalid && (password.touched || password.dirty)">
+                <p *ngIf="password.errors?.['required']"> Password is mandatory</p>
+                <p *ngIf="password.errors?.['minlength']"> Password should be minimum 8 characters </p>
+                <div *ngIf="password?.errors?.['passwordStrength']">
+                    <p *ngIf="password?.errors?.['passwordStrength'].upperCase == false">One upper case character should be present in the password</p>
+                    <p *ngIf="password?.errors?.['passwordStrength'].lowerCase == false">One lower case character should be present in the password</p>
+                    <p *ngIf="password?.errors?.['passwordStrength'].number == false">One digit character should be present in the password</p>
+                    <p *ngIf="password?.errors?.['passwordStrength'].specialChar == false">One special character should be present in the password</p>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Confirm PAssword</label>
+            <input type="password" class="form-control" id="password" formControlName="confirmPassword" placeholder="Confirm password">
+            <div *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)">
+                <p *ngIf="password.errors?.['required']"> Password is mandatory</p>
+                <p *ngIf="confirmPassword.errors?.['passwordsNotMatching']"> Password and Confirm Password do not match </p>
+                         
+
+
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

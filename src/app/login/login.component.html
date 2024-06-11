@@ -1,0 +1,70 @@
+<div class="container-fluid " >
+    <div class="row">
+        <div id="container" class="col-4 offset-4  text-primary">
+            <h1> LOGIN</h1>
+            <form #loginForm="ngForm">
+                <div class="form-group">
+                    <label class="form-label">
+                        Email Id
+                    </label>
+                    <input type="text" class="form-control"  ngModel name="emailId" #emailId="ngModel" required pattern="[a-zA-Z0-9._%+-]+@intelliswift.com">
+                    <div *ngIf="emailId.invalid && (emailId.dirty || emailId.touched)" class="text-danger">
+                        <p *ngIf="emailId?.errors?.['required']">Email Id is mandatory</p>
+                        <p *ngIf="emailId?.errors?.['pattern']">Email Id is not valid</p>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label class="form-label" >
+                        Password
+                    </label>
+                    <input type="text" class="form-control"   required minlength="8" ngModel name="password" #password="ngModel">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                        <p *ngIf="password?.errors?.['required']">Password is mandatory</p>
+                        <p *ngIf="password?.errors?.['minlength']">Password should be minimum 8 characters long</p>
+                    </div>
+                       
+                </div>
+                <div style="display: flex; justify-content: space-between;gap: 20px;">
+                    <input (click)="loginEventHandler(loginForm)" type="button" value="Login" [disabled]="loginForm.invalid" class="btn btn-primary mt-2" />
+                    <input  (click)="redirectToRegister()" type="button" value="Register"  class="btn btn-success mt-2" />
+              
+                </div>
+                <div *ngIf="serverErrors.length>0">
+<p style="color: red;">email or password are incorrect</p>
+                </div>
+            </form>
+            <!-- {{loginForm.value |json}}
+            {{loginForm.errors |json}} -->
+        </div>
+        
+    </div>
+</div>
+
+<!-- <div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="bg-light rounded p-5">
+                <h2 class="text-center mb-4">LOGIN</h2>
+                <form #loginForm="ngForm">
+                    <div class="mb-3">
+                        <label for="emailId" class="form-label">Email Id</label>
+                        <input type="text" class="form-control" id="emailId" ngModel name="emailId" #emailId="ngModel" required pattern="[a-zA-Z0-9._%+-]+@intelliswift.com">
+                        <div *ngIf="emailId.invalid && (emailId.dirty || emailId.touched)" class="invalid-feedback">
+                            <p *ngIf="emailId?.errors?.['required']">Email Id is mandatory</p>
+                            <p *ngIf="emailId?.errors?.['pattern']">Email Id is not valid</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" ngModel name="password" #password="ngModel" required minlength="8">
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                            <p *ngIf="password?.errors?.['required']">Password is mandatory</p>
+                            <p *ngIf="password?.errors?.['minlength']">Password should be minimum 8 characters long</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="loginForm.invalid">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->

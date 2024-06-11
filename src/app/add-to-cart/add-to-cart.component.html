@@ -1,0 +1,46 @@
+<div class="card" style="min-height:400px;">
+    <div class="card-body">
+        <div class="productDetails">
+            <h4>Product Details</h4>
+            <div class="details">
+                <span>Company Name:</span><p class="detail"> {{myCompanyName}}</p>
+            </div>
+            <div class="details">
+                <span>Product ID :</span>
+                <p class="detail"> {{selProduct?.productId}}</p>
+            </div>
+            <div class="details">
+                <span>Product Name :</span>
+                <p class="detail"> {{selProduct?.productName}}</p>
+            </div>
+            <div class="details">
+                <span>Product Price :</span>
+                <p class="detail">{{selProduct?.description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="container">
+       <div style="display: flex; flex-direction: column;">
+        <p>select quantity</p>
+        <div class="row">
+            <div class="col-auto">
+                <button class="btn btn-danger" (click)="valueDecrease()" [disabled]="qtySelected <= 0">-</button>
+            </div>
+            <div class="col">
+                <p class="text-center">{{qtySelected}}</p>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary" (click)="valueIncrease()" [disabled]="selProduct === null || qtySelected >= selProduct.quantity">+</button>
+            </div>
+        </div>
+       </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="m-2">
+            <input type="button" value="Confirm" class="btn btn-success p-2 m-2" (click)="confirmEventHandler();" />
+            <input type="button" value="Cancel" class="btn btn-danger p-2 m-2" (click)="cancelEventHandler();"/>
+        </div>
+    </div>
+</div>

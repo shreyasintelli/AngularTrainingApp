@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row bg-dark text-white">
+        <div class="col-3 offset-4" >
+            <h1> PAYMENTS</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 border border-primary border-end">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" routerLink="paymentByCard" >Credit/Debit Card</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="paymentByWireTransfer" >Wire Transfer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="paymentByPayPal" >Pay Pal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="paymentByApplePay" >Apple Pay</a>
+                </li>
+                
+              </ul>
+        </div>
+        <div class="col-8">
+                <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

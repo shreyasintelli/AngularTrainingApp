@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-4">
+            <input type="text" placeholder="Enter text to search" #searchTextBox (keyup)="searchTermEventHandler(searchTextBox);"/>
+        
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productsArr|displayArray:searchTerm">
+                        <td>{{product.productName}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

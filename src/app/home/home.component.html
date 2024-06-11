@@ -1,0 +1,36 @@
+<!-- 
+    Toggle UI between 2 components ProductList and Cart
+    Using 
+
+ -->
+ <ng-template #cartButton>
+    <input type="button" value="Show Cart" class="btn btn-primary" (click)="toggleDisplay()" />
+</ng-template>
+<ng-template #productListButton>
+    <input type="button" value="Show Product Lists" class="btn btn-primary" (click)="toggleDisplay()" />
+</ng-template>
+<ng-template #displayProductList>
+    <app-product-list 
+    [productsArr]="productsArr"
+    (sendCartObjFromPlToHome)="sendCartObjFromPlToHomeHandler($event)"></app-product-list>
+</ng-template>
+<ng-template #displayCart>
+    <app-cart [cartArr]="cartArr">
+
+    </app-cart>
+</ng-template>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 offset-10 mt-1">
+            <ng-container *ngIf="showCart;then productListButton;else cartButton">
+            </ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <ng-container *ngIf="showCart;then displayCart;else displayProductList">
+        </ng-container>
+    </div>
+
+</div>
+

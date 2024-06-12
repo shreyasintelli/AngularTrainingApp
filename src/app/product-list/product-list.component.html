@@ -32,7 +32,7 @@
   <div class="container-fluid">
     <div class="row">
       <!-- Left Side (Product Cards) -->
-      <div class="col-md-8" style="overflow-y: auto; height: 100vh;">
+      <div [ngClass]="{'col-md-8': showAddToCart, 'col-md-12': !showAddToCart}" style="overflow-y: auto; height: 100vh;">
         <div class="card-columns">
           <div class="card mb-4" *ngFor="let product of productsArr">
             <div class="imgContainer">
@@ -49,7 +49,7 @@
         </div>
       </div>
       <!-- Right Side (Add to Cart Component) -->
-      <div class="col-md-4">
+      <div *ngIf="showAddToCart" class="col-md-4">
         <div class="sticky-top" style="top: 0; height: 100vh; overflow-y: auto;">
           <h6>Add to cart section</h6>
           <div *ngIf="showAddToCart">
